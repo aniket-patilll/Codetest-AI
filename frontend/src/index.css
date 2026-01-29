@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Supabase-inspired Theme - Forced Dark Mode */
+
+@layer base {
+  :root {
+    /* Defaulting to Dark Mode values directly in root to ensure black theme everywhere */
+    --background: 0 0% 9%; /* #161616 - Very Dark Grey */
+    --foreground: 0 0% 95%; /* #EDEDED - Off White */
+ 
+    --card: 0 0% 11%; /* #1c1c1c */
+    --card-foreground: 0 0% 95%;
+ 
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 95%;
+ 
+    --primary: 154 60% 53%; /* #3ECF8E - Bright Supabase Green */
+    --primary-foreground: 0 0% 9%;
+ 
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+ 
+    --accent: 154 60% 53%;
+    --accent-foreground: 0 0% 9%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 154 60% 53%;
+ 
+    --radius: 0.5rem;
+    
+    /* Sidebar specific if needed, matching dark theme */
+    --sidebar-background: 0 0% 9%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 154 60% 53%;
+    --sidebar-primary-foreground: 0 0% 9%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 154 60% 53%;
+  }
+ 
+  .dark {
+    /* Identical to root, just to be safe if class is added */
+    --background: 0 0% 9%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 154 60% 53%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 154 60% 53%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 154 60% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply dark;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-[#1c1c1c]/80 backdrop-blur-md border border-white/5;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-400;
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.2), 0 0 40px hsl(var(--primary) / 0.1);
+  }
+}

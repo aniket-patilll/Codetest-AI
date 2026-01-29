@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - SUPABASE_JWT_SECRET=${SUPABASE_JWT_SECRET}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_MODEL=${GROQ_MODEL:-llama-3.1-8b-instant}
+      - CODE_TIMEOUT_SECONDS=10
+      - CODE_MEMORY_LIMIT_MB=256
+      - ENVIRONMENT=development
+    volumes:
+      - ../app:/app/app  # Mount for hot reload
+      - /var/run/docker.sock:/var/run/docker.sock  # Docker-in-Docker for sandboxing
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Python sandbox image (pre-built for faster execution)
+  sandbox-python:
+    build:
+      context: sandbox
+      dockerfile: python.Dockerfile
+    image: codecraft-sandbox-python:latest
+    profiles:
+      - build-only
+
+  # C++ sandbox image
+  sandbox-cpp:
+    build:
+      context: sandbox
+      dockerfile: cpp.Dockerfile
+    image: codecraft-sandbox-cpp:latest
+    profiles:
+      - build-only
+
+  # Java sandbox image
+  sandbox-java:
+    build:
+      context: sandbox
+      dockerfile: java.Dockerfile
+    image: codecraft-sandbox-java:latest
+    profiles:
+      - build-only
