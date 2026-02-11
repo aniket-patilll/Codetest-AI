@@ -17,7 +17,7 @@ interface AuthContextType {
   session: Session | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string, requiredRole?: UserRole) => Promise<void>;
   signup: (name: string, email: string, password: string, role: UserRole) => Promise<void>;
   loginWithGoogle: (role?: UserRole) => Promise<void>;
   logout: (redirectTo?: string) => Promise<void>;
@@ -304,7 +304,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   }, [user, session]);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string, requiredRole?: UserRole) => {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
@@ -315,7 +315,33 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         throw new Error(error.message);
       }
 
-      // Ensure profile exists after login
+      // Check role if required
+      if (requiredRole && data.session?.user) {
+        const { data: profile, error: profileError } = await supabase
+          .from('users')
+          .select('role')
+          .eq('id', data.session.user.id)
+          .maybeSingle();
+        
+        if (profileError) {
+          console.error('Error fetching user profile:', profileError);
+          throw new Error('Failed to verify user role');
+        }
+        
+        if (!profile) {
+          // Profile doesn't exist - sign out and throw error
+          await supabase.auth.signOut();
+          throw new Error('Your account is not fully set up. Please complete the email verification process.');
+        }
+        
+        if (profile.role !== requiredRole) {
+          // Wrong role - sign out and throw error
+          await supabase.auth.signOut();
+          throw new Error(`Invalid credentials: This is a ${profile.role} account. Please use the ${requiredRole} login page.`);
+        }
+      }
+
+      // Ensure profile exists after login (for users who signed up before verification was enforced)
       if (data.session) {
         await ensureUserProfile(data.session);
       }
@@ -335,6 +361,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             full_name: name,
             role: role || 'student',
           },
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       });
 
@@ -342,10 +369,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         throw new Error(error.message);
       }
 
-      // Create profile after signup
-      if (data.session) {
-        await ensureUserProfile(data.session, role);
-      }
+      // DO NOT create profile here - let the onAuthStateChange SIGNED_IN event handle it
+      // after the user verifies their email. This ensures profiles are only created
+      // for verified users when "Confirm email" is enabled in Supabase.
     } catch (error) {
       console.error('Signup error:', error);
       throw error;
