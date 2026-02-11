@@ -51,6 +51,105 @@ CodeTest-AI (also known as CodeCraft) is a comprehensive, AI-powered coding test
 
 ---
 
+## User Guide
+
+### 🎭 Choose Your Role
+
+#### 👨‍🏫 Host
+*   **Who represents this role?** Recruiters, Interviewers, Teachers, or Team Leads.
+*   **What can you do?** Create coding tests, manage questions, invite candidates, and view detailed performance reports.
+
+#### 👨‍💻 Student
+*   **Who represents this role?** Job Candidates, Students, or anyone taking a test.
+*   **What can you do?** Join tests using a unique code, take proctored coding exams, and view your results.
+
+### 🚀 Getting Started
+
+#### 1. Sign Up & Login
+*   Visit the homepage.
+*   Click **"Host Login"** or **"Student Login"** depending on your role.
+*   If you are new, click **"Sign up"** to create an account.
+*   **Important**: You must verify your email address before logging in. Check your inbox for a verification link!
+
+### 👨‍🏫 Host Workflow
+
+As a Host, your main goal is to create tests and assess candidates.
+
+#### 1. Dashboard
+*   After logging in, you will see your **Host Dashboard**.
+*   This is your command center where you can see all your active and past tests.
+
+#### 2. Creating a Test
+*   Click the **"Create New Test"** button.
+*   **Step 1: Test Details**
+    *   Enter a **Title** (e.g., "Python Basics Assessment").
+    *   Set the **Duration** (how long students have to complete it).
+    *   Add a **Description** (instructions for the candidates).
+*   **Step 2: Add Questions**
+    *   You can create custom coding problems.
+    *   Provide a title, problem description, and input/output examples.
+    *   Set difficulty (Easy, Medium, Hard).
+    *   **Test Cases**: Add "hidden" test cases that the system will use to grade the code.
+*   **Step 3: Review & Publish**
+    *   Once you are happy, save the test.
+
+#### 3. Inviting Students
+*   Find your test on the dashboard.
+*   You will see a unique **Test Code** (e.g., `XYZ-123`).
+*   Share this code with your candidates via email or chat.
+
+#### 4. Viewing Results
+*   Go to the **"Results"** or **"Leaderboard"** section.
+*   See a ranked list of candidates.
+*   Click on a student to view their **detailed report**, including:
+    *   Score
+    *   Code quality analysis
+    *   Time taken
+    *   **Proctoring Analysis**: See if they switched tabs or tried to copy-paste!
+
+### 👨‍💻 Student Workflow
+
+As a Student, your goal is to showcase your coding skills.
+
+#### 1. Joining a Test
+*   Log in to your **Student Dashboard**.
+*   Enter the **Test Code** provided by the Host (e.g., `XYZ-123`).
+*   Click **"Join Test"**.
+
+#### 2. The Waiting Room
+*   You will see the test instructions and duration.
+*   **Wait** until you are ready to start. Once you begin, the timer starts!
+
+#### 3. Taking the Test (The Environment)
+*   **Proctoring Notice**: The test is monitored.
+    *   ⚠️ **Do not switch tabs.**
+    *   ⚠️ **Do not copy-paste.**
+    *   ⚠️ **Stay in full-screen mode.**
+*   **Coding Interface**:
+    *   **Left Panel**: Read the problem description.
+    *   **Center Panel**: Write your code (Python supports auto-complete!).
+    *   **Right Panel**: Run your code to check for errors.
+*   **Process**:
+    1.  Read the question.
+    2.  Write your solution.
+    3.  Click **"Run Code"** to test against example cases.
+    4.  Click **"Next"** to move to the next question.
+
+#### 4. Submission
+*   When you have finished all questions, click **"Submit Test"**.
+*   If the time runs out, the test will **auto-submit**.
+*   **Results**: Depending on the settings, you may see your score immediately or wait for the host to release them.
+
+### 🛡️ Security & Anti-Cheating (Proctoring)
+
+ThirdEye uses advanced AI to ensure fair play:
+*   **Tab Switching Detection**: The system knows if you leave the test window.
+*   **Copy/Paste Blocks**: You cannot copy code from external sources.
+*   **Full-Screen Lock**: The test enforces full-screen mode to verify focus.
+*   **AI Analysis**: After the test, the Host receives a report on potential suspicious behavior.
+
+---
+
 ## Technology Stack
 
 ### Backend Technologies
