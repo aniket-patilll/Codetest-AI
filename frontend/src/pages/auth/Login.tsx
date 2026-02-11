@@ -16,10 +16,10 @@ const Login: React.FC = () => {
         <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
       </div>
 
-      <Card className="relative w-full max-w-md border-border/50 bg-card/80 backdrop-blur-xl">
+      <Card className="relative w-full max-w-md mx-auto border-border/50 bg-card/80 backdrop-blur-xl">
         <CardHeader className="space-y-4 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-            <Terminal className="h-6 w-6 text-primary" />
+          <div className="h-18 w-36 flex mx-auto items-center justify-center">
+            <img src="/thirdeye-logo.webp" alt="ThirdEye Logo" className="w-full h-full object-contain" />
           </div>
           <div>
             <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>

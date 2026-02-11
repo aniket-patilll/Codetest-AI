@@ -666,6 +666,10 @@ const TestEnvironment: React.FC = () => {
       {/* Top Bar */}
       <header className="flex h-14 items-center justify-between border-b border-white/5 bg-background px-4 shrink-0 z-10">
         <div className="flex items-center gap-4">
+          <div className="h-8 w-20 flex items-center">
+            <img src="/thirdeye-logo.webp" alt="ThirdEye Logo" className="w-full h-full object-contain" />
+          </div>
+          <div className="h-6 w-px bg-white/10" />
           <Button 
             variant="ghost" 
             size="sm" 

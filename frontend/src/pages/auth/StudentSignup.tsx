@@ -65,9 +65,9 @@ const StudentSignup: React.FC = () => {
 
         <Card className="relative w-full max-w-md border-border/50 bg-card/80 backdrop-blur-xl">
           <CardHeader className="space-y-4 text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-green-500/10">
-              <GraduationCap className="h-6 w-6 text-green-500" />
-            </div>
+          <div className="h-18 w-36 flex mx-auto items-center justify-center">
+            <img src="/thirdeye-logo.webp" alt="ThirdEye Logo" className="w-full h-full object-contain" />
+          </div>
             <div>
               <CardTitle className="text-2xl font-bold">Check your email!</CardTitle>
               <CardDescription className="mt-2">
@@ -96,8 +96,8 @@ const StudentSignup: React.FC = () => {
 
       <Card className="relative w-full max-w-md border-border/50 bg-card/80 backdrop-blur-xl">
         <CardHeader className="space-y-4 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10">
-            <GraduationCap className="h-6 w-6 text-blue-500" />
+          <div className="h-18 w-36 flex mx-auto items-center justify-center">
+            <img src="/thirdeye-logo.webp" alt="ThirdEye Logo" className="w-full h-full object-contain" />
           </div>
           <div>
             <CardTitle className="text-2xl font-bold">Student Sign Up</CardTitle>
