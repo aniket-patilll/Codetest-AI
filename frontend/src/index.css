@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ThirdEye Theme - Light Mode */
+
+@layer base {
+  :root {
+    /* Light Mode values - white background with ThirdEye green */
+    --background: 0 0% 100%; /* White background */
+    --foreground: 0 0% 10%; /* Dark text */
+ 
+    --card: 0 0% 98%; /* Very light grey for cards */
+    --card-foreground: 0 0% 10%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+ 
+    --primary: 93 57% 30%; /* #497A21 - ThirdEye Green */
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 93 20% 90%;
+    --secondary-foreground: 93 57% 20%;
+ 
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+ 
+    --accent: 93 57% 30%;
+    --accent-foreground: 0 0% 100%;
+ 
+    --destructive: 0 62.8% 45%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 93 57% 30%;
+ 
+    --radius: 0.5rem;
+    
+    /* Sidebar specific - light theme */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 93 57% 30%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 93 20% 95%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 93 57% 30%;
+
+    /* Success and Warning colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-md border border-border shadow-sm;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-green-600 to-green-500;
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.15), 0 0 40px hsl(var(--primary) / 0.08);
+  }
+}
